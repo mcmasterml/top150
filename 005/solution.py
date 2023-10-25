@@ -15,6 +15,7 @@ class Solution:
         #             return i
 
         # Boyer-Moore Voting Algorithm
+        # idea: votes cancel out (can use when "majority")
         count = 0
         for num in nums:
             if count == 0:
