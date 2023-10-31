@@ -46,24 +46,59 @@ class Solution:
         #         newl.append(nums1[i1])
         # nums1 = newl
 
-        # attempt 4
-        A = m - 1
-        B = n - 1
-        C = m + n - 1
+        # # attempt 4
+        # A = m - 1
+        # B = n - 1
+        # C = m + n - 1
 
-        while (A >= 0) and (B >= 0):
-            if nums2[B] > nums1[A]:
-                nums1[C] = nums2[B]
-                C -= 1
-                B -= 1
+        # while (A >= 0) and (B >= 0):
+        #     if nums2[B] > nums1[A]:
+        #         nums1[C] = nums2[B]
+        #         C -= 1
+        #         B -= 1
+        #     else:
+        #         nums1[C] = nums1[A]
+        #         C -= 1
+        #         A -= 1
+
+        # # attempt 6: recall & improve
+        # A = m - 1
+        # B = n - 1
+        # C = n + m - 1
+        # while (B >= 0) or (A >= 0):
+        #     if B >= 0:
+        #         if nums2[B] > nums1[A]:
+        #             nums1[C] = nums2[B]
+        #             nums2[B] = 0
+        #             B -= 1
+        #             C -= 1
+        #     if A >= 0:
+        #         if nums2[B] <= nums1[A]:
+        #             nums1[C] = nums1[A]
+        #             A -= 1
+        #             C -= 1
+        #     if (A < 0) and (B >= 0):
+        #         nums1[C] = nums2[B]
+        #         B -= 1
+        #         C -= 1
+
+        # attempt 7: sharifzad's solution
+
+        a, b, write_index = m-1, n-1, m + n - 1
+
+        while b >= 0:
+            if a >= 0 and nums1[a] > nums2[b]:
+                nums1[write_index] = nums1[a]
+                a -= 1
             else:
-                nums1[C] = nums1[A]
-                C -= 1
-                A -= 1
+                nums1[write_index] = nums2[b]
+                b -= 1
+
+            write_index -= 1
 
 
-nums1 = [1, 2, 3, 0, 0, 0]
-nums2 = [2, 5, 6]
+nums1 = [3, 5, 6, 0, 0, 0]
+nums2 = [7, 8, 9]
 
 s = Solution()
 s.merge(nums1, 3, nums2, 3)
