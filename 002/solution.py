@@ -1,7 +1,7 @@
 # 27. Remove Element
 
 class Solution:
-    def removeElement(self, nums: list[int], val: int) -> int:
+    def removeElement(self, nums: List[int], val: int) -> int:
 
         # k = 0
         # # change all `val` to `None`
