@@ -13,14 +13,20 @@
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-        words = s.strip().split(" ")
-        words = words[::-1]
-        myString = ""
-        for word in words:
-            word.strip()
-            myString += word
-            if words[-1] != word:
-                myString += " "
-        return myString
+        # words = s.strip().split()
+        # words = [element for element in words if element != ""][::-1]
+        # myString = ""
+        # for word in words:
+        #     myString += word
+        #     if words[-1] != word:
+        #         myString += " "
+        # return myString
 
-        # This IS INCORRECT CURRENTLY
+        # This ^ actually fails testcase04... not sure how/why
+        # but what should be "s TVi" about 4 lines in becomes "sTVi"
+        # and that's this code's only mistake. It's weird.
+        # But the code below works fine.
+
+        s = s.split()
+        s = s[::-1]
+        return " ".join(s)
